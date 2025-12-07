@@ -28,16 +28,7 @@
 > **TypeScript Source Export Notes**
 >
 > 이 패키지들은 빌드된 JavaScript 번들이 아닌 **TypeScript 소스 파일(.ts/.tsx)을 그대로 export** 합니다.
-> 별도의 타입 정의 파일(.d.ts)이 제공되지 않으며, 소스 코드를 직접 참조하는 방식입니다.
->
-> **Frontend (Vite, Next.js 등)**
->
-> - 최신 프론트엔드 빌드 도구는 TypeScript를 기본 지원하므로 별도 설정 없이 바로 사용할 수 있습니다.
->
-> **Backend / Script (Node.js)**
->
-> - Node.js 22.6.0 이상에서 `--experimental-strip-types` 플래그를 사용하여 실행하는 환경이 테스트되었습니다.
-> - 그 외의 환경(`ts-node`, `tsx` 등)에서는 별도의 설정이 필요할 수 있으며, 공식적으로 테스트되지 않았습니다.
+> Vite.js와 같은 빌드 도구에서 사용할 수 있으며, Node.js 환경에서는 `--experimental-strip-types` 플래그를 사용해도 사용이 불가능합니다.
 
 ## 🛠️ Local Development
 
