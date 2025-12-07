@@ -1,14 +1,25 @@
 # Exocortex Appkit
 
-이 저장소는 [npm workspaces](https://docs.npmjs.com/cli/v7/using-npm/workspaces), [Changesets](https://github.com/changesets/changesets)를 사용하여 관리되며 [JSR](https://jsr.io)로 배포되는 Monorepo입니다.
+이 저장소는 [npm workspaces](https://docs.npmjs.com/cli/v7/using-npm/workspaces), [Changesets](https://github.com/changesets/changesets)를 사용하여 관리되며 [GitHub Packages](https://github.com/features/packages)로 배포되는 Monorepo입니다.
 
 ## Packages
 
-- `@ssen/country-code`
-- `@ssen/dialog`
-- `@ssen/format`
-- `@ssen/use-element-intersection`
-- `@ssen/use-local-storage`
+모든 패키지는 `@iamssen` scope로 배포됩니다.
+
+- `@iamssen/country-code`
+- `@iamssen/dialog`
+- `@iamssen/format`
+- `@iamssen/use-element-intersection`
+- `@iamssen/use-local-storage`
+
+## 설치 및 사용 (Installation & Usage)
+
+이 패키지들을 사용하려면 프로젝트 루트의 `.npmrc` 파일에 다음 설정이 필요합니다:
+
+```ini
+@iamssen:registry=https://npm.pkg.github.com
+//npm.pkg.github.com/:_authToken=${GITHUB_TOKEN}
+```
 
 ## 로컬 개발 가이드 (Local Development)
 
@@ -69,7 +80,7 @@ npx changeset
    - **Changeset이 있는 경우**: `Changeset Action`이 버전 범프(bump) PR을 자동으로 생성합니다.
 2. **Version Bump PR Merged**:
    - 버전 범프 PR이 병합되면, CI가 다시 트리거됩니다.
-   - `npm run publish-packages`가 실행되어 JSR에 패키지가 자동으로 배포됩니다.
+   - `npm run publish-packages`가 실행되어 GitHub Packages에 패키지가 자동으로 배포됩니다.
 
 ### 수동 실행이 필요한 경우 (Manual Steps)
 
