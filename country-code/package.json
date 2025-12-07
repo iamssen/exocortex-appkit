@@ -1,7 +1,11 @@
 {
-  "name": "@ssen/country-code",
+  "name": "@iamssen/country-code",
   "version": "0.0.1",
   "exports": "./index.ts",
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
+  },
+  "types": "./index.ts",
   "peerDependencies": {
     "react": "^19.0.0"
   },

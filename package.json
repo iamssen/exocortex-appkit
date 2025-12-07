@@ -9,8 +9,8 @@
     "use-local-storage"
   ],
   "scripts": {
-    "version-packages": "changeset version && node scripts/sync-jsr-version.mjs",
-    "publish-packages": "jsr publish --allow-slow-types",
+    "version-packages": "changeset version",
+    "publish-packages": "changeset publish",
     "test": "vitest run",
     "type-check": "tsc --watch --noEmit",
     "format": "prettier --write \"**/*.{js,jsx,mjs,cjs,ts,tsx,mts,cts}\"",
@@ -46,7 +46,6 @@
     "globals": "^16.5.0",
     "happy-dom": "^20.0.11",
     "husky": "^9.1.7",
-    "jsr": "^0.13.5",
     "lint-staged": "^16.2.7",
     "mathjs": "^15.1.0",
     "numeral": "^2.0.6",

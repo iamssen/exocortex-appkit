@@ -11,7 +11,7 @@ jobs:
     permissions:
       contents: write
       pull-requests: write
-      id-token: write # JSR 인증을 위해 필수
+      packages: write
 
     steps:
       - name: Checkout Repo
@@ -21,6 +21,7 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 24
+          registry-url: 'https://npm.pkg.github.com'
 
       - name: Install Dependencies
         run: npm ci
@@ -32,13 +33,10 @@ jobs:
       - name: Create Release Pull Request or Publish
         uses: changesets/action@v1
         with:
-          # 1. 버전 업데이트 시 실행할 명령어 (기본값: changeset version)
           version: npm run version-packages
-          # 2. 배포 시 실행할 명령어 (여기가 핵심!)
-          # Changesets가 버전을 올리고 main에 머지되면 이 명령어가 실행됨
           publish: npm run publish-packages
           commit: 'chore: update versions'
           title: 'chore: version packages'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          # JSR은 id-token 권한만 있으면 별도 토큰 없이 OIDC로 인증 가능 (매우 편함)
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}

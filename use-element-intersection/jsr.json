@@ -1,5 +1,0 @@
-{
-  "name": "@ssen/use-element-intersection",
-  "version": "0.0.1",
-  "exports": "./index.ts"
-}
