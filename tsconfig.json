@@ -34,7 +34,6 @@
     "dialog",
     "format",
     "use-element-intersection",
-    "use-local-storage",
-    "use-resize-observer"
+    "use-local-storage"
   ]
 }

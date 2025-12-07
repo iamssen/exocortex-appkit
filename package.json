@@ -6,8 +6,7 @@
     "dialog",
     "format",
     "use-element-intersection",
-    "use-local-storage",
-    "use-resize-observer"
+    "use-local-storage"
   ],
   "scripts": {
     "version-packages": "changeset version && node scripts/sync-jsr-version.mjs",

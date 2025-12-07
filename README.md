@@ -9,7 +9,6 @@
 - `@ssen/format`
 - `@ssen/use-element-intersection`
 - `@ssen/use-local-storage`
-- `@ssen/use-resize-observer`
 
 ## 로컬 개발 가이드 (Local Development)
 
