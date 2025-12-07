@@ -10,7 +10,7 @@
     "use-resize-observer"
   ],
   "scripts": {
-    "version-packages": "changeset version",
+    "version-packages": "changeset version && node scripts/sync-jsr-version.mjs",
     "publish-packages": "jsr publish --allow-slow-types",
     "test": "vitest run",
     "type-check": "tsc --watch --noEmit",
