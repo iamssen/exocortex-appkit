@@ -1,0 +1,61 @@
+{
+  "name": "exocortex-appkit",
+  "private": true,
+  "workspaces": [
+    "country-code",
+    "dialog",
+    "format",
+    "use-element-intersection",
+    "use-local-storage",
+    "use-resize-observer"
+  ],
+  "scripts": {
+    "version-packages": "changeset version",
+    "publish-packages": "jsr publish --allow-slow-types",
+    "test": "vitest run",
+    "type-check": "tsc --watch --noEmit",
+    "format": "prettier --write \"**/*.{js,jsx,mjs,cjs,ts,tsx,mts,cts}\"",
+    "lint": "eslint .",
+    "precommit": "lint-staged",
+    "prepare": "husky"
+  },
+  "lint-staged": {
+    "**/*.{ts,tsx,mts,cts}": [
+      "prettier --write",
+      "eslint --max-warnings 0",
+      "vitest related"
+    ],
+    "**/*.{js,jsx,mjs,cjs}": [
+      "prettier --write",
+      "eslint --max-warnings 0"
+    ],
+    "**/*.{json,md,yml,yaml}": [
+      "prettier --write"
+    ]
+  },
+  "devDependencies": {
+    "@changesets/cli": "^2.27.1",
+    "@eslint/js": "^9.39.1",
+    "@types/node": "^24.10.1",
+    "@types/numeral": "^2.0.5",
+    "@types/react": "^19.2.7",
+    "eslint": "^9.39.1",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-react-hooks": "^7.0.1",
+    "eslint-plugin-react-refresh": "^0.4.24",
+    "eslint-plugin-unicorn": "^62.0.0",
+    "globals": "^16.5.0",
+    "happy-dom": "^20.0.11",
+    "husky": "^9.1.7",
+    "jsr": "^0.13.5",
+    "lint-staged": "^16.2.7",
+    "mathjs": "^15.1.0",
+    "numeral": "^2.0.6",
+    "prettier": "^3.7.4",
+    "react": "^19.2.1",
+    "typescript": "^5.9.3",
+    "typescript-eslint": "^8.48.1",
+    "vite-tsconfig-paths": "^5.1.4",
+    "vitest": "^4.0.15"
+  }
+}
