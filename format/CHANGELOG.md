@@ -1,5 +1,11 @@
 # @ssen/format
 
+## 0.0.2
+
+### Patch Changes
+
+- 0330471: Release test on github packages
+
 ## 0.0.1
 
 ### Patch Changes
