@@ -1,90 +1,73 @@
 # Exocortex Appkit
 
-이 저장소는 [npm workspaces](https://docs.npmjs.com/cli/v7/using-npm/workspaces), [Changesets](https://github.com/changesets/changesets)를 사용하여 관리되며 [GitHub Packages](https://github.com/features/packages)로 배포되는 Monorepo입니다.
+**Exocortex Appkit**은 Exocortex 생태계에서 사용되는 공통 UI 컴포넌트와 유틸리티를 관리하는 Monorepo입니다.
+[npm workspaces](https://docs.npmjs.com/cli/v7/using-npm/workspaces)와 [Changesets](https://github.com/changesets/changesets)를 기반으로 운영되며, 모든 패키지는 **TypeScript 소스 코드 형태**로 [GitHub Packages](https://github.com/features/packages)에 배포됩니다.
 
-## Packages
+## 📦 Packages
 
-모든 패키지는 `@iamssen` scope로 배포됩니다.
+모든 패키지는 `@iamssen` 스코프 하에 배포됩니다.
 
-- `@iamssen/country-code`
-- `@iamssen/dialog`
-- `@iamssen/format`
-- `@iamssen/use-element-intersection`
-- `@iamssen/use-local-storage`
+| Package                             | Description                                 |
+| ----------------------------------- | ------------------------------------------- |
+| `@iamssen/country-code`             | ISO 국가 코드 및 국기 데이터 유틸리티       |
+| `@iamssen/dialog`                   | Promise 기반의 React Dialog 시스템          |
+| `@iamssen/format`                   | 숫자, 통화 등 데이터 포맷팅 라이브러리      |
+| `@iamssen/use-element-intersection` | Intersection Observer 기반의 요소 감지 Hook |
+| `@iamssen/use-local-storage`        | Type-safe한 LocalStorage 상태 관리 Hook     |
 
-## 설치 및 사용 (Installation & Usage)
+## 🚀 Installation & Setup
 
-이 패키지들을 사용하려면 프로젝트 루트의 `.npmrc` 파일에 다음 설정이 필요합니다:
+이 라이브러리는 GitHub Packages 레지스트리를 통해 배포됩니다. 패키지를 설치하려면 프로젝트 루트의 `.npmrc` 파일에 레지스트리 설정이 필요합니다.
 
 ```ini
 @iamssen:registry=https://npm.pkg.github.com
 //npm.pkg.github.com/:_authToken=${GITHUB_TOKEN}
 ```
 
-## 로컬 개발 가이드 (Local Development)
+> [!IMPORTANT]
+> **TypeScript Source Export Notes**
+>
+> 이 패키지들은 빌드된 JavaScript 번들이 아닌 **TypeScript 소스 파일(.ts/.tsx)을 그대로 export** 합니다.
+> 별도의 타입 정의 파일(.d.ts)이 제공되지 않으며, 소스 코드를 직접 참조하는 방식입니다.
+>
+> **Frontend (Vite, Next.js 등)**
+>
+> - 최신 프론트엔드 빌드 도구는 TypeScript를 기본 지원하므로 별도 설정 없이 바로 사용할 수 있습니다.
+>
+> **Backend / Script (Node.js)**
+>
+> - Node.js 22.6.0 이상에서 `--experimental-strip-types` 플래그를 사용하여 실행하는 환경이 테스트되었습니다.
+> - 그 외의 환경(`ts-node`, `tsx` 등)에서는 별도의 설정이 필요할 수 있으며, 공식적으로 테스트되지 않았습니다.
 
-이 섹션은 개발자가 로컬 환경에서 수행해야 하는 작업들입니다.
+## 🛠️ Local Development
 
-### 1. 시작하기 (Getting Started)
+### Project Setup
 
-저장소를 클론하고 의존성을 설치합니다. `husky`를 통해 git hook이 자동으로 설정됩니다.
+저장소를 클론하고 의존성을 설치합니다. `husky`를 통해 Git Hook이 자동으로 설정됩니다.
 
 ```bash
 npm install
 ```
 
-### 2. 개발 및 테스트 (Development & Testing)
+### Key Commands
 
-- **타입 체크 (Watch Mode)**: 실시간으로 타입 오류를 확인합니다.
-  ```bash
-  npm run type-check
-  ```
-- **테스트 실행**: 유닛 테스트를 실행합니다.
-  ```bash
-  npm test
-  ```
+주요 개발 명령어입니다.
 
-### 3. 코드 품질 관리 (Code Quality)
+| Command              | Description                                      |
+| -------------------- | ------------------------------------------------ |
+| `npm run type-check` | TypeScript 타입 오류를 실시간으로 감시합니다.    |
+| `npm test`           | Vitest를 사용하여 유닛 테스트를 수행합니다.      |
+| `npm run lint`       | ESLint로 코드 스타일과 잠재적 오류를 검사합니다. |
+| `npm run format`     | Prettier로 코드를 포맷팅합니다.                  |
 
-코드를 커밋하기 전에 스타일과 오류를 검사할 수 있습니다. (Commit 시 자동으로 실행됩니다)
+## 📦 Release Workflow
 
-- **린트 (Lint)**:
-  ```bash
-  npm run lint
-  ```
-- **포맷팅 (Format)**:
-  ```bash
-  npm run format
-  ```
+배포 프로세스는 **Changesets**와 **GitHub Actions**를 통해 완전히 자동화되어 있습니다.
 
-### 4. 배포 준비 (Release Preparation)
-
-새로운 기능을 추가하거나 수정하여 배포가 필요할 때, **반드시 Changeset을 생성해야 합니다.**
-
-```bash
-npx changeset
-```
-
-대화형 프롬프트를 따라 변경된 패키지와 변경 유형(major, minor, patch)을 선택하세요. 이 명령어로 생성된 changeset 파일만 커밋하여 푸시하면 이후 과정은 자동화됩니다.
-
----
-
-## CI/CD 자동화 (Automation)
-
-이 섹션은 Github Actions를 통해 자동으로 수행되는 작업들입니다. 개발자가 직접 실행할 필요는 없지만, 프로세스를 이해하는 데 도움이 됩니다.
-
-### 자동화된 배포 프로세스
-
-1. **Pull Request Merged (to `main`)**:
-   - `main` 브랜치에 코드가 병합되면 CI가 트리거됩니다.
-   - **Changeset이 있는 경우**: `Changeset Action`이 버전 범프(bump) PR을 자동으로 생성합니다.
-2. **Version Bump PR Merged**:
-   - 버전 범프 PR이 병합되면, CI가 다시 트리거됩니다.
-   - `npm run publish-packages`가 실행되어 GitHub Packages에 패키지가 자동으로 배포됩니다.
-
-### 수동 실행이 필요한 경우 (Manual Steps)
-
-로컬에서 수동으로 버전을 올리거나 배포를 테스트해야 하는 경우에만 사용합니다.
-
-- **버전 적용**: `npm run version-packages`
-- **배포 실행**: `npm run publish-packages`
+1. **Changeset 생성**: 기능 개발 후 PR을 생성하기 전, 변경 사항에 대한 Changeset을 생성합니다.
+   ```bash
+   npx changeset
+   ```
+2. **Pull Request 병합**: `main` 브랜치에 코드가 병합되면 CI가 트리거됩니다.
+3. **Version Bump**: `Changeset Action`이 자동으로 버전을 올리는 PR("Version Packages")을 생성합니다.
+4. **배포 (Publish)**: 해당 PR이 병합되면, GitHub Packages에 새로운 버전이 자동으로 배포됩니다.
