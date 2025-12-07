@@ -29,11 +29,5 @@
     "composite": true,
     "rewriteRelativeImportExtensions": true
   },
-  "include": [
-    "country-code",
-    "dialog",
-    "format",
-    "use-element-intersection",
-    "use-local-storage"
-  ]
+  "include": ["packages/**/*"]
 }

@@ -2,11 +2,7 @@
   "name": "exocortex-appkit",
   "private": true,
   "workspaces": [
-    "country-code",
-    "dialog",
-    "format",
-    "use-element-intersection",
-    "use-local-storage"
+    "packages/*"
   ],
   "scripts": {
     "version-packages": "changeset version",
