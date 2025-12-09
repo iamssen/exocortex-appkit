@@ -3,3 +3,6 @@ dist
 .DS_Store
 *.tsbuildinfo
 coverage
+
+*storybook.log
+storybook-static
