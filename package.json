@@ -1,6 +1,6 @@
 {
   "name": "@iamssen/exocortex-appkit",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "type": "module",
   "author": "SSen",
   "license": "MIT",
@@ -19,6 +19,9 @@
     },
     "./use-local-storage": {
       "import": "./packages/use-local-storage/index.ts"
+    },
+    "./use-resize-observer": {
+      "import": "./packages/use-resize-observer/index.ts"
     }
   },
   "scripts": {
