@@ -1,12 +1,27 @@
 {
-  "name": "exocortex-appkit",
-  "private": true,
-  "workspaces": [
-    "packages/*"
-  ],
+  "name": "@iamssen/exocortex-appkit",
+  "version": "0.0.1",
+  "type": "module",
+  "author": "SSen",
+  "license": "MIT",
+  "exports": {
+    "./country-code": {
+      "import": "./packages/country-code/index.ts"
+    },
+    "./dialog": {
+      "import": "./packages/dialog/index.ts"
+    },
+    "./format": {
+      "import": "./packages/format/index.ts"
+    },
+    "./use-element-intersection": {
+      "import": "./packages/use-element-intersection/index.ts"
+    },
+    "./use-local-storage": {
+      "import": "./packages/use-local-storage/index.ts"
+    }
+  },
   "scripts": {
-    "version-packages": "changeset version",
-    "publish-packages": "changeset publish",
     "test": "vitest run",
     "type-check": "tsc --watch --noEmit",
     "format": "prettier --write \"**/*.{js,jsx,mjs,cjs,ts,tsx,mts,cts}\"",
@@ -28,8 +43,17 @@
       "prettier --write"
     ]
   },
+  "files": [
+    "packages"
+  ],
+  "dependencies": {
+    "mathjs": "^15.1.0",
+    "numeral": "^2.0.6"
+  },
+  "peerDependencies": {
+    "react": "^19.2.1"
+  },
   "devDependencies": {
-    "@changesets/cli": "^2.27.1",
     "@eslint/js": "^9.39.1",
     "@types/node": "^24.10.1",
     "@types/numeral": "^2.0.5",
@@ -43,10 +67,7 @@
     "happy-dom": "^20.0.11",
     "husky": "^9.1.7",
     "lint-staged": "^16.2.7",
-    "mathjs": "^15.1.0",
-    "numeral": "^2.0.6",
     "prettier": "^3.7.4",
-    "react": "^19.2.1",
     "typescript": "^5.9.3",
     "typescript-eslint": "^8.48.1",
     "vitest": "^4.0.15"
