@@ -1,4 +1,4 @@
-export * from './cellClasses.module.css';
+export { default as cellClasses } from './cellClasses.module.css';
 export * from './select.ts';
 
 export * from './columns/iso8601Column.tsx';
