@@ -1,28 +1,28 @@
 import clsx from 'clsx/lite';
 import type { Column } from 'react-data-grid';
 import { Format } from '../../format/components.tsx';
-import type { SelectNumber } from '../selectors/selectNumber.ts';
-import { selectNumber } from '../selectors/selectNumber.ts';
+import type { ValueSelector } from '../select.ts';
+import { selectValue } from '../select.ts';
 import cellClasses from './cellClasses.module.css';
 
 interface FormatColumn<Row> extends Omit<Column<Row>, 'renderCell'> {
   format: string;
-  select: SelectNumber<Row>;
+  select: ValueSelector<Row, number>;
   subFormat?: never;
   subSelect?: never;
 }
 
 interface SubFormatColumn<Row> extends Omit<Column<Row>, 'renderCell'> {
   format: string;
-  select: SelectNumber<Row>;
+  select: ValueSelector<Row, number>;
   subFormat: string;
-  subSelect: SelectNumber<Row>;
+  subSelect: ValueSelector<Row, number>;
 }
 
 type C<Row> = FormatColumn<Row> | SubFormatColumn<Row>;
 
 export function numberColumn<Row>({
-  format: f,
+  format,
   select,
   subFormat,
   subSelect,
@@ -31,12 +31,12 @@ export function numberColumn<Row>({
 }: C<Row>): Column<Row> {
   return {
     renderCell: ({ row }) => {
-      const value = selectNumber(row, select);
-      const subValue = subSelect ? selectNumber(row, subSelect) : undefined;
+      const value = selectValue(row, select);
+      const subValue = subSelect ? selectValue(row, subSelect) : undefined;
       return (
         <>
           <sub>{subValue && <Format format={subFormat} n={subValue} />}</sub>
-          <Format format={f} n={value} replacer="-" />
+          <Format format={format} n={value} replacer="-" />
         </>
       );
     },
