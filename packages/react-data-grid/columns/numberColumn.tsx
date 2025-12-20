@@ -6,16 +6,16 @@ import { selectValue } from '../select.ts';
 import cellClasses from './cellClasses.module.css';
 
 interface FormatColumn<Row> extends Omit<Column<Row>, 'renderCell'> {
-  format: string;
+  format?: string;
   select: ValueSelector<Row, number>;
   subFormat?: never;
   subSelect?: never;
 }
 
 interface SubFormatColumn<Row> extends Omit<Column<Row>, 'renderCell'> {
-  format: string;
+  format?: string;
   select: ValueSelector<Row, number>;
-  subFormat: string;
+  subFormat?: string;
   subSelect: ValueSelector<Row, number>;
 }
 

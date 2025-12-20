@@ -1,6 +1,6 @@
 {
   "name": "@iamssen/exocortex-appkit",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "type": "module",
   "author": "SSen",
   "license": "MIT",
@@ -23,8 +23,8 @@
     "./use-resize-observer": {
       "import": "./packages/use-resize-observer/index.ts"
     },
-    "./grid": {
-      "import": "./packages/grid/index.ts"
+    "./react-data-grid": {
+      "import": "./packages/react-data-grid/index.ts"
     }
   },
   "scripts": {
