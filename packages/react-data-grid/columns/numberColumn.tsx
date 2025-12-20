@@ -35,7 +35,13 @@ export function numberColumn<Row>({
       const subValue = subSelect ? selectValue(row, subSelect) : undefined;
       return (
         <>
-          <sub>{subValue && <Format format={subFormat} n={subValue} />}</sub>
+          <sub>
+            {subValue && (
+              <span>
+                (<Format format={subFormat} n={subValue} />)
+              </span>
+            )}
+          </sub>
           <Format format={format} n={value} replacer="-" />
         </>
       );
