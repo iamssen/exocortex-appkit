@@ -1,9 +1,9 @@
 import clsx from 'clsx/lite';
 import type { Column } from 'react-data-grid';
 import { Format } from '../../format/components.tsx';
+import cellClasses from '../cellClasses.module.css';
 import type { ValueSelector } from '../select.ts';
 import { selectValue } from '../select.ts';
-import cellClasses from './cellClasses.module.css';
 
 interface FormatColumn<Row> extends Omit<Column<Row>, 'renderCell'> {
   format?: string;
