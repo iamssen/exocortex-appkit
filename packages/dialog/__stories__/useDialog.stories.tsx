@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
-import { useState, type ReactNode } from 'react';
+import type { ReactNode } from 'react';
+import { useState } from 'react';
 import type { DialogProps } from '../useDialog.ts';
 import { useDialog } from '../useDialog.ts';
 import { useESC } from '../useESC.ts';

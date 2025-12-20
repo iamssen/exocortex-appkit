@@ -29,5 +29,5 @@
     "composite": true,
     "rewriteRelativeImportExtensions": true
   },
-  "include": ["packages/**/*"]
+  "include": ["packages/**/*", "vite-env.d.ts"]
 }

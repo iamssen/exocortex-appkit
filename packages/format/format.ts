@@ -27,7 +27,7 @@ export const format =
     config: FormatConfigProps = {},
   ): FormatFunction =>
   (n: number | undefined | null) => {
-    if (typeof n !== 'number') {
+    if (typeof n !== 'number' || Number.isNaN(n)) {
       return replacer;
     }
 

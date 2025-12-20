@@ -1,6 +1,6 @@
 {
   "name": "@iamssen/exocortex-appkit",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "type": "module",
   "author": "SSen",
   "license": "MIT",
@@ -22,6 +22,9 @@
     },
     "./use-resize-observer": {
       "import": "./packages/use-resize-observer/index.ts"
+    },
+    "./grid": {
+      "import": "./packages/grid/index.ts"
     }
   },
   "scripts": {
@@ -30,19 +33,19 @@
     "storybook:build": "storybook build",
     "type-check": "tsc --watch --noEmit",
     "format": "prettier --write \"**/*.{js,jsx,mjs,cjs,ts,tsx,mts,cts}\"",
-    "lint": "eslint .",
+    "lint": "eslint --max-warnings 0 --no-warn-ignored .",
     "precommit": "lint-staged",
     "prepare": "husky"
   },
   "lint-staged": {
     "**/*.{ts,tsx,mts,cts}": [
       "prettier --write",
-      "eslint --max-warnings 0",
+      "eslint --max-warnings 0 --no-warn-ignored",
       "vitest related"
     ],
     "**/*.{js,jsx,mjs,cjs}": [
       "prettier --write",
-      "eslint --max-warnings 0"
+      "eslint --max-warnings 0 --no-warn-ignored"
     ],
     "**/*.{json,md,yml,yaml}": [
       "prettier --write"
@@ -51,15 +54,43 @@
   "files": [
     "packages"
   ],
-  "dependencies": {
-    "mathjs": "^15.1.0",
-    "numeral": "^2.0.6"
-  },
   "peerDependencies": {
-    "react": "^19.2.1"
+    "@iamssen/exocortex": "0.0.10",
+    "clsx": "^2.1.1",
+    "mathjs": "^15.1.0",
+    "numeral": "^2.0.6",
+    "react": "^19.2.1",
+    "react-data-grid": "^7.0.0-beta.59",
+    "react-icons": "^5.5.0",
+    "react-router": "^7.10.1"
+  },
+  "peerDependenciesMeta": {
+    "react": {
+      "optional": true
+    },
+    "clsx": {
+      "optional": true
+    },
+    "mathjs": {
+      "optional": true
+    },
+    "numeral": {
+      "optional": true
+    },
+    "react-data-grid": {
+      "optional": true
+    },
+    "react-router": {
+      "optional": true
+    },
+    "react-icons": {
+      "optional": true
+    }
   },
   "devDependencies": {
     "@eslint/js": "^9.39.1",
+    "clsx": "^2.1.1",
+    "@iamssen/exocortex": "0.0.10",
     "@storybook/addon-a11y": "^10.1.4",
     "@storybook/addon-docs": "^10.1.4",
     "@storybook/react-vite": "^10.1.4",
@@ -70,6 +101,7 @@
     "autoprefixer": "^10.4.22",
     "eslint": "^9.39.1",
     "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-import": "^2.32.0",
     "eslint-plugin-react-hooks": "^7.0.1",
     "eslint-plugin-react-refresh": "^0.4.24",
     "eslint-plugin-storybook": "^10.1.4",
@@ -78,10 +110,16 @@
     "happy-dom": "^20.0.11",
     "husky": "^9.1.7",
     "lint-staged": "^16.2.7",
+    "mathjs": "^15.1.0",
+    "numeral": "^2.0.6",
     "prettier": "^3.7.4",
+    "react-data-grid": "^7.0.0-beta.59",
+    "react-icons": "^5.5.0",
+    "react-router": "^7.10.1",
     "storybook": "^10.1.4",
     "typescript": "^5.9.3",
     "typescript-eslint": "^8.48.1",
+    "vite": "^7.2.6",
     "vitest": "^4.0.15"
   }
 }
